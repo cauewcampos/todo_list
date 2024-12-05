@@ -3,16 +3,27 @@ const userImg = document.getElementById("new_img_url");
 const addBtn = document.querySelector("#addUser_btn");
 const usersContainer = document.getElementById("users");
 
+
 const saveToLocalStorage = (users) => {
     localStorage.setItem("usersData", JSON.stringify(users));
 };
+
 
 const loadFromLocalStorage = () => {
     const usersData = localStorage.getItem("usersData");
     return usersData ? JSON.parse(usersData) : [];
 };
 
+
 let users = loadFromLocalStorage();
+
+
+const renderUsers = () => {
+    usersContainer.innerHTML = "";
+    users.forEach((user) => {
+        saveNewUser(user.avatar, user.name, user.id, user.afazeres, false);
+    });
+};
 
 const id_newUser = () => {
     let currentId = parseInt(localStorage.getItem("lastId")) || 0;
@@ -21,11 +32,10 @@ const id_newUser = () => {
 };
 
 const saveNewUser = (avatar, name, id = null, tasks = [], saveToStorage = true) => {
-    
     const userId = id || id_newUser();
     const divProfile = document.createElement("section");
     divProfile.classList.add("user_page");
-    divProfile.dataset.userId = userId;
+    divProfile.dataset.userId = userId; 
 
     const userProfile = document.createElement("div");
     userProfile.classList.add("user_profile");
@@ -75,7 +85,8 @@ const saveNewUser = (avatar, name, id = null, tasks = [], saveToStorage = true) 
 
     tasks.forEach((task) => renderTask(userTasksContainer, task.tarefa, task.completed));
 
-    addBtn.addEventListener("click", () => {
+    addNewTaskBtn.addEventListener("click", (e) => {
+        e.preventDefault();
         const taskValue = newTaskInput.value.trim();
         if (taskValue === "") {
             alert("Por favor, preencha a tarefa!");
@@ -89,6 +100,24 @@ const saveNewUser = (avatar, name, id = null, tasks = [], saveToStorage = true) 
         saveToLocalStorage(users);
 
         newTaskInput.value = "";
+    });
+
+    editBtn.addEventListener("click", () => {
+        const newUserName = prompt("Edite o nome do usuário:", name);
+        const newUserImg = prompt("Edite a URL da imagem:", avatar);
+        if (newUserName) userNameElement.innerText = newUserName;
+        if (newUserImg) userImage.src = newUserImg;
+
+        const user = users.find((u) => u.id === userId);
+        if (newUserName) user.name = newUserName;
+        if (newUserImg) user.avatar = newUserImg;
+        saveToLocalStorage(users);
+    });
+
+    remBtn.addEventListener("click", () => {
+        divProfile.remove();
+        users = users.filter((u) => u.id !== userId);
+        saveToLocalStorage(users);
     });
 
     usersContainer.appendChild(divProfile);
