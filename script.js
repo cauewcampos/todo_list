@@ -21,6 +21,7 @@ const id_newUser = () => {
 };
 
 const saveNewUser = (avatar, name, id = null, tasks = [], saveToStorage = true) => {
+    
     const userId = id || id_newUser();
     const divProfile = document.createElement("section");
     divProfile.classList.add("user_page");
@@ -31,7 +32,8 @@ const saveNewUser = (avatar, name, id = null, tasks = [], saveToStorage = true) 
     divProfile.appendChild(userProfile);
 
     const userImage = document.createElement("img");
-    userImage.src = avatar;
+    const formattedAvatar = avatar.endsWith(".png") ? avatar : `${avatar}.png`;
+    userImage.src = formattedAvatar;
     userImage.alt = "Foto de perfil do usuário";
     userImage.classList.add("user_image");
     userProfile.appendChild(userImage);
