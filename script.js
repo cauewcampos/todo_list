@@ -147,3 +147,17 @@ const renderTask = (container, taskText, completed) => {
     container.appendChild(userTasks);
 };
 
+addBtn.addEventListener("click", () => {
+    const userNameValue = userName.value.trim();
+    const userImgValue = userImg.value.trim();
+
+    if (userNameValue && userImgValue) {
+        saveNewUser(userImgValue, userNameValue);
+        userName.value = "";
+        userImg.value = "";
+    } else {
+        alert("Por favor, preencha todos os campos.");
+    }
+});
+
+renderUsers();
