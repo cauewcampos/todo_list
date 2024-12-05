@@ -225,3 +225,23 @@ input {
     width: 100%;
     height: 100%;
 }
+
+/* Responsividade */
+@media screen and (max-width: 460px){
+    #container {
+        width: 300px;
+    }
+    
+    .input_user {
+        flex-grow: 1;
+        justify-content: space-between; 
+        gap: 0px;
+    }
+    
+    .input_user input {
+        flex-grow: 1;
+        border: 1px solid #ccc;
+        padding: 5px;
+        width: 20%;
+    }
+}
