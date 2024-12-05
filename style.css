@@ -1,0 +1,227 @@
+body {
+    background-color: #c5c1c0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    background-color: #031424;
+    margin: 20px auto; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 900px;
+}
+
+#title {
+    text-align: center;
+    margin: 0;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    color: WHITE;
+}
+
+/* ADICIONAR NOVO USUARIO */
+#add_menu {
+    background-color:#30415D;
+    color: WHITE;
+    border-radius: 3px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+#add_menu h2 {
+    margin-left: 15px;
+}
+
+.input_user {
+    display: flex;
+    justify-content: space-between; 
+    gap: 0px;
+}
+
+.input_user input {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+input {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#addUser_btn {
+    background-color: #60735f;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    border: none;
+    cursor: pointer;   
+    padding: 4px;
+    border-radius: 3px;
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+/* PERFIL DOS USUARIOS */
+.user_page {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    border-radius: 4px;
+    background-color:#30415D;
+    padding: 15px;
+}
+
+.user_profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.user_image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#users:empty {
+    display: none;
+}
+
+.user_name {
+    flex-grow: 1;
+    margin-left: 10px;
+    word-break: break-all;
+}
+
+.btn_Edit, .btn_Rem {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 3px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.btn_Edit {
+    background-color: #60735f;
+    color: white;
+    
+}
+
+.btn_Rem {
+    background-color: #60735f;
+    color: white;
+    margin-left: 8px;
+}
+
+/* Tarefas do usuário */
+.user_tasks {
+    background-color: #c5c1c0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0 auto;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 3px;
+    gap: 2px;
+    align-items: center;
+}
+
+.user_tasks p {
+    flex-grow: 0;
+    margin: 0 10px;
+    flex: 1;
+    display: flex;
+    margin-top: 2px;
+    word-break: break-all;
+    padding: 1px;
+    font-weight: bold;
+}
+
+.add_newTask {
+    background-color:#60735f;
+    width: 18%;
+    color: white;
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.new_task {
+    width: 80%;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 6px;
+    margin-left: 0px;
+}
+
+.config_user {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+.user_tasks input[type="checkbox"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.user_tasks input[type="checkbox"]:checked {
+    background-color: #d3d3d3;
+    border-color: #d3d3d3;
+}
+
+.user_tasks input[type="checkbox"]:checked ~ p {
+    text-decoration: line-through;
+    color: gray;
+    font-style: italic;
+}
+
+.user_tasks input[type="checkbox"]:checked::after {
+    content: '\2713';
+    font-size: 12px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
