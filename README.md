@@ -42,6 +42,10 @@ git clone https://github.com/cauewcampos/todo_list.git
 
 5. Você pode editar ou excluir tanto o usuário quanto as tarefas ao clicar nos respectivos ícones de editar (lápis) e excluir (lixeira).
 
-6. As informações dos usuários e suas tarefas serão salvas automaticamente no localStorage e carregadas ao reabrir a página.
+6. As informações dos usuários e suas tarefas serão salvas automaticamente no local storage e carregadas ao reabrir a página.
+
+## 📝 Licença
+
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo `LICENSE` para obter mais informações.
 
 
