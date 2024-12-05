@@ -98,3 +98,52 @@ const saveNewUser = (avatar, name, id = null, tasks = [], saveToStorage = true) 
         saveToLocalStorage(users);
     }
 };
+
+const renderTask = (container, taskText, completed) => {
+    const userTasks = document.createElement("div");
+    userTasks.classList.add("user_tasks");
+
+    const taskCheck = document.createElement("input");
+    taskCheck.type = "checkbox";
+    taskCheck.checked = completed;
+    userTasks.appendChild(taskCheck);
+
+    const taskTextElement = document.createElement("p");
+    taskTextElement.innerText = taskText;
+    userTasks.appendChild(taskTextElement);
+
+    const editTaskBtn = document.createElement("button");
+    editTaskBtn.classList.add("btn_Edit", "edit_task");
+    editTaskBtn.innerHTML = '<i class="fa-solid fa-pen"></i>';
+    userTasks.appendChild(editTaskBtn);
+
+    const remTaskBtn = document.createElement("button");
+    remTaskBtn.classList.add("btn_Rem", "rm_task");
+    remTaskBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+    userTasks.appendChild(remTaskBtn);
+
+    editTaskBtn.addEventListener("click", () => {
+        const newTaskValue = prompt("Edite a tarefa:", taskTextElement.innerText);
+        if (newTaskValue && newTaskValue.trim() !== "") {
+            taskTextElement.innerText = newTaskValue;
+            const userId = container.closest(".user_page").dataset.userId;
+            const user = users.find((u) => u.id == userId);
+            const task = user.afazeres.find((t) => t.tarefa === taskText);
+            task.tarefa = newTaskValue;
+            saveToLocalStorage(users);
+        } else {
+            alert("O campo de tarefa não pode estar vazio.");
+        }
+    });
+
+    remTaskBtn.addEventListener("click", () => {
+        userTasks.remove();
+        const userId = container.closest(".user_page").dataset.userId;
+        const user = users.find((u) => u.id == userId);
+        user.afazeres = user.afazeres.filter((t) => t.tarefa !== taskText);
+        saveToLocalStorage(users);
+    });
+
+    container.appendChild(userTasks);
+};
+
