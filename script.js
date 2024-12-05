@@ -13,3 +13,9 @@ const loadFromLocalStorage = () => {
 };
 
 let users = loadFromLocalStorage();
+
+const id_newUser = () => {
+    let currentId = parseInt(localStorage.getItem("lastId")) || 0;
+    localStorage.setItem("lastId", currentId + 1);
+    return currentId + 1;
+};
