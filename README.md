@@ -8,11 +8,13 @@
 )
 
 <p align="center">
- <a href="#description">Description</a> • 
+ <a href="#description">About</a> • 
   <a href="#layout">Layout</a> •
- <a href="#instructions">Instructions For Use</a> •
- <a href="#contribute">Contribute</a>
+ <a href="#instructions">Instructions</a> •
 </p>
+
+
+[📖 Read this page in English](README.en.md)
 
 <h2 id="description">📌 About</h2>
 Uma aplicação web desenvolvida utilizando HTML, CSS e JavaScript, permitindo a criação de múltiplos usuários e suas respectivas tarefas. Os usuários podem ser editados ou excluídos, e as informações são armazenadas localmente no localStorage do navegador em formato JSON. Os dados armazenados incluem: user.avatar, user.name, user.id e user.tasks.
